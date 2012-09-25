@@ -1,0 +1,12 @@
+set daemon 30
+set mailserver localhost
+<% @alert_emails.each do |email| -%>
+set alert <%= email %> but not on { pid }
+<% end %>
+set eventqueue
+    basedir /var/monit
+    slots 100
+set logfile <%= @logfile %>
+Include /etc/monit/conf.d/*.monitrc
+set httpd port 2812 and use the address localhost
+  allow localhost

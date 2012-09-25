@@ -1,0 +1,7 @@
+check process redis
+  with pidfile /var/run/redis_<%= node[:redis][:port] %>.pid
+  start program = "/etc/init.d/redis-server start" as uid root and gid root
+  stop program = "/etc/init.d/redis-server stop" as uid root and gid root
+  <% @rules.each do |rule| -%>
+  if <%= rule %>
+  <% end -%>

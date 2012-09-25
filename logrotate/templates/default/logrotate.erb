@@ -1,0 +1,17 @@
+<% @path.each do |p| -%>
+<%= p %> {
+  <%= @frequency %>
+  <% if @olddir %>
+  <% olddir = File.join(File.dirname(p), 'old') -%>
+  <% FileUtils.mkdir_p(olddir) -%>
+  olddir <%= olddir %>
+  <% end %>
+  missingok
+  rotate <%= @rotate %>
+  compress
+  delaycompress
+  copytruncate
+  notifempty
+  create <%= @create %>
+}
+<% end -%>

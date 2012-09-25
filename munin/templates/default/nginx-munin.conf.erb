@@ -1,0 +1,6 @@
+server {
+  server_name             <%= @server_name %>;
+  access_log              /var/log/<%= @server_name %>.access.log;
+  keepalive_timeout       65;
+  root                    <%= @html_dir %>;
+}
